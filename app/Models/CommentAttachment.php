@@ -1,0 +1,14 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class CommentAttachment extends Model
+{
+    public function comment()
+{
+    return $this->belongsTo(Comment::class);
+}
+
+}
