@@ -20,7 +20,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'view'])->name('dashboard');
 
     // Boards CRUD
-    Route::resource('boards', BoardController::class);
+    Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'view'])->name('dashboard');
+    Route::resource('boards', BoardController::class); // Web only
+    Route::resource('tasks', TaskController::class);  // Web only
+});
+
 
     // Tasks CRUD
     Route::resource('tasks', TaskController::class);
