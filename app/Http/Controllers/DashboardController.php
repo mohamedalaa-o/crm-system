@@ -82,4 +82,13 @@ class DashboardController extends Controller
             'item' => $item
         ]);
     }
+
+    public function view()
+    {
+        $boards = \App\Models\Board::with('tasks')->get();
+        return view('dashboard', compact('boards'));
+    }
+
+    
+
 }
