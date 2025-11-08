@@ -198,6 +198,7 @@ body {
 }
 </style>
 </head>
+
 <body class="font-sans flex transition-all duration-500 min-h-screen">
 <div id="sidebar" class="w-64 flex-shrink-0 flex flex-col transition-all duration-300">
     <div class="sidebar-header p-4 text-xl font-bold border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">

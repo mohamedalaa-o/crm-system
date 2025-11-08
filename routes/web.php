@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth; // مهم عشان Auth facade ما يطلعش تحذير
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BoardController;
 use App\Http\Controllers\TaskController;
@@ -12,11 +12,6 @@ use App\Http\Controllers\HomeController;
 Route::get('/login', function() {
     return "Login Page (temporary)";
 })->name('login');
-
-// Route homepage
-Route::get('/', function () {
-    return view('welcome');
-});
 
 // Routes للـ Dashboard والـ CRUD تحت auth middleware
 Route::middleware('auth')->group(function () {
@@ -48,5 +43,10 @@ Route::middleware('auth')->group(function () {
 // Home route
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-// Laravel Auth routes (login, register, logout, etc.)
+// Laravel Auth routes
 Auth::routes();
+
+// ✅ أول ما المستخدم يفتح الموقع يدخل على اللوجين
+Route::get('/', function () {
+    return redirect()->route('login');
+});
