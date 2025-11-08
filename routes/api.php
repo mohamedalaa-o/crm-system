@@ -15,7 +15,11 @@ Route::get('/ping', function () {
 Route::post('/registration', [AuthController::class, 'register']);
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::apiResource('boards', BoardController::class);
+    Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('boards', BoardController::class); // API only
+    Route::apiResource('tasks', TaskController::class);   // API only
+});
+
 });
 Route::post('/users/assign-role', [AuthController::class, 'assignRole']);
 
